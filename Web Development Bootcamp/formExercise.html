@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form >
+		<h1>Register</h1>
+	<div>
+	<label for="firstName">First Name:</label>
+	<input id="firstName" type="text" placeholder="John" required>
+	<label for="lastName">Last Name:</label>
+	<input id="lastName" type="text" placeholder="Smith">
+	</div>
+<div>
+	<label for="male">Male</label>
+	<input id="male" type="radio" name="gender">
+	<label for="female">Female</label>
+	<input id="female" type="radio" name="gender">
+	<label for="other">Other</label>
+	<input id="other" type="radio" name="gender">
+</div>
+<div>
+	<label for="email">Email:</label>
+	<input type="email" id="email" placeholder="your email" required>
+	<label for="password">Password:</label>
+	<input type="password" id="password" placeholder="your password" minlength="5" maxlength="10" required>
+</div>
+
+<div>
+	<label for="birthday"></label>
+	<select name="month" id="month">
+
+	</select>
+	<select name="day" id="day"></select>
+	<select name="year" id="year"></select>
+</div>
+
+<button type="submit">Submit</button>
+	</form>
+
+</body>
+</html>
