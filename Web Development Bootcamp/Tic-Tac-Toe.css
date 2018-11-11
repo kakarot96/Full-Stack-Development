@@ -1,0 +1,20 @@
+.box{
+	width:50px;
+	height:50px;
+/*	background: red;
+*/}
+
+.vertical{
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+}
+.horizontal{
+	border-bottom: 2px solid gray;
+	border-top: 2px solid gray;
+}
+table{
+	margin: auto;
+}
+h1{
+	text-align:center;
+}
