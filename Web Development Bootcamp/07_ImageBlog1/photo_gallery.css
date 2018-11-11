@@ -3,3 +3,12 @@ img{
 	float: left;
 	margin:1.66%
 }
+p{
+	font-family: Patrick Hand;
+	margin-left: 1.66%;
+	border-bottom: 2px solid gray;
+	width:30%;
+	font-size: 30px;
+	padding-bottom: 10px;
+	text-transform: uppercase;
+}
