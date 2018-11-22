@@ -1,0 +1,22 @@
+body{
+    background-color: #212121;
+}
+
+.container{
+    max-width: 600px;
+    margin: auto;
+}
+.box{
+    padding-bottom: 30%;
+    width: 30%;
+    background-color: red;
+    float: left;
+    margin: 1.66%;
+}
+h1{
+    color :white;
+}
+
+span{
+    color: white;
+}
