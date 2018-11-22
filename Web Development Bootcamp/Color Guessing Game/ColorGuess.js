@@ -30,12 +30,14 @@ for(var i=0;i<boxes.length;i++){
 easyBtn.addEventListener("click",function(){
     easyBtn.classList.add("selected");
     hardBtn.classList.remove("selected");
+    message.textContent = "";
     generateAndSetColors(3);
 });
 
 hardBtn.addEventListener("click",function(){
     easyBtn.classList.remove("selected");
     hardBtn.classList.add("selected");
+    message.textContent = "";
     generateAndSetColors(boxes.length);
 });
 
