@@ -24,7 +24,8 @@ h1{
     text-align: center;
     margin: 0;
     text-transform: uppercase;
-    
+    transition: background-color 0.6s;
+    -moz-transition: background-color 0.6s;
     padding: 20px 0;
     
 }
@@ -63,6 +64,7 @@ button{
     letter-spacing: 1px;
     font-size: inherit;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    outline: none;
     transition: all 0.3s;
     -moz-transition: all 0.3s;
 }

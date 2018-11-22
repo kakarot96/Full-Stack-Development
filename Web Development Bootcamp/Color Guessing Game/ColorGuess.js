@@ -6,6 +6,7 @@ var message = document.getElementById("message");
 var reset = document.getElementById("reset");
 var easyBtn = document.getElementById("easyBtn");
 var hardBtn = document.getElementById("hardBtn");
+var topHeading = document.getElementById("topHeading");
 
 generateAndSetColors(boxes.length);
 
@@ -54,6 +55,8 @@ function changeColors(answer){
     for(var i=0;i<boxes.length;i++){
         boxes[i].style.backgroundColor=colors[answer];
     }
+    guess.style.backgroundColor=colors[answer];
+    topHeading.style.backgroundColor=colors[answer];
 }
 function random_rgb() {
     var o = Math.round, r = Math.random, s = 255;
@@ -75,4 +78,7 @@ function generateAndSetColors(num){
     }
     answer = Math.round(Math.random()*(num-1));
     guess.textContent = colors[answer];
+    guess.style.backgroundColor= "steelblue";
+    topHeading.style.backgroundColor= "steelblue";
+
 }
