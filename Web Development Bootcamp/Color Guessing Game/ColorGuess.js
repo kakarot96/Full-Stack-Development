@@ -4,18 +4,13 @@ var answer = Math.round(Math.random()*(boxes.length-1));
 var guess = document.getElementById("guess");
 var message = document.getElementById("message");
 var reset = document.getElementById("reset");
-
-reset.addEventListener("click", function(){
-generateAndSetColors(boxes.length);
-message.textContent = "";
-this.textContent = "New Colors";
-
-
-});
+var easyBtn = document.getElementById("easyBtn");
+var hardBtn = document.getElementById("hardBtn");
 
 generateAndSetColors(boxes.length);
 
 
+    
 for(var i=0;i<boxes.length;i++){
   
 
@@ -32,6 +27,26 @@ for(var i=0;i<boxes.length;i++){
         }
     });
 }
+easyBtn.addEventListener("click",function(){
+    easyBtn.classList.add("selected");
+    hardBtn.classList.remove("selected");
+    generateAndSetColors(3);
+});
+
+hardBtn.addEventListener("click",function(){
+    easyBtn.classList.remove("selected");
+    hardBtn.classList.add("selected");
+    generateAndSetColors(boxes.length);
+});
+
+reset.addEventListener("click", function(){
+    generateAndSetColors(colors.length);
+    message.textContent = "";
+    this.textContent = "New Colors";
+    });
+
+
+
 
 function changeColors(answer){
     for(var i=0;i<boxes.length;i++){
@@ -45,10 +60,16 @@ function random_rgb() {
 
 function generateAndSetColors(num){
     colors = [];
-    for(var i=0;i<num;i++){
+    for(var i=0;i<boxes.length;i++){
         var color = random_rgb();
-        colors.push(color);
-        boxes[i].style.backgroundColor = color;
+        if(i<num){
+            colors.push(color);
+            boxes[i].style.backgroundColor = color;
+            boxes[i].style.display = "block";
+        }
+        else{
+            boxes[i].style.display = "none";
+        }    
     }
     answer = Math.round(Math.random()*(num-1));
     guess.textContent = colors[answer];

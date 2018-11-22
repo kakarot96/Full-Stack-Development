@@ -21,3 +21,7 @@ h1{
     background-color: white;
     text-align: center;
 }
+
+.selected{
+    background-color: orange;
+}
