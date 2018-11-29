@@ -1,0 +1,16 @@
+{
+  "name": "moviesearch",
+  "version": "1.0.0",
+  "description": "Movie search app using OMDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kunal Aggarwal",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
