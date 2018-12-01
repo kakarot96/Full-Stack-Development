@@ -1,6 +1,8 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var campgrounds = [{
         name: "Campground 1",
         image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=350"
