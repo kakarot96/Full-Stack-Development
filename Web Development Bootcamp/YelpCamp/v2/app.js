@@ -14,20 +14,21 @@ var campgroundSchema = new mongoose.Schema({
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-// Campground.create({
-//         name: "Campground 1",
-//         image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=350"
-//     },
-//     function(err, campground) {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("New Campground created");
-//             console.log("campground");
-//         }
-//     }
-// )
+Campground.create({
+        name: "Campground 1",
+        image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=350",
+        description: "This is campground site 1"
+    },
+    function(err, campground) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("New Campground created");
+            console.log("campground");
+        }
+    }
+)
 
 app.get("/", function(req, res) {
     res.render("landing");
@@ -62,14 +63,15 @@ app.post("/campgrounds", function(req, res) {
             res.redirect("/campgrounds");
         }
     });
-
-
 });
+
 app.get("/campgrounds/new", function(req, res) {
     res.render("new");
 });
 
-
+app.get("/campgrounds/:id", function(req, res) {
+    res.send("This will be a description page");
+});
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Yelpcamp v2 started!!");
 });
