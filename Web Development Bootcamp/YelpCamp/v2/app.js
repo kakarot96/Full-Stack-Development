@@ -9,26 +9,27 @@ app.set("view engine", "ejs");
 
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-Campground.create({
-        name: "Campground 1",
-        image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=350",
-        description: "This is campground site 1"
-    },
-    function(err, campground) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log("New Campground created");
-            console.log("campground");
-        }
-    }
-)
+// Campground.create({
+//         name: "Campground 1",
+//         image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=350",
+//         description: "This is campground site 1"
+//     },
+//     function(err, campground) {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             console.log("New Campground created");
+//             console.log("campground");
+//         }
+//     }
+// );
 
 app.get("/", function(req, res) {
     res.render("landing");
@@ -51,9 +52,11 @@ app.post("/campgrounds", function(req, res) {
     console.log("in the post");
     var name = req.body.name;
     var image = req.body.image;
+    var desc = req.body.description;
     var newCampground = {
         name: name,
-        image: image
+        image: image,
+        description: desc
     }
     Campground.create(newCampground, function(err, campground) {
         if (err) {
@@ -70,7 +73,16 @@ app.get("/campgrounds/new", function(req, res) {
 });
 
 app.get("/campgrounds/:id", function(req, res) {
-    res.send("This will be a description page");
+    console.log(req.params.id);
+    Campground.findById(req.params.id, function(err, foundCampground) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("show", { campground: foundCampground });
+        }
+    });
+
 });
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Yelpcamp v2 started!!");
