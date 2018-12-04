@@ -19,11 +19,11 @@ var blogSchema = new mongoose.Schema({
 });
 
 var Blog = mongoose.model("Blog", blogSchema);
-Blog.create({
-    title: "Blog 1",
-    image: "https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=350",
-    body: "Body of Blog 1"
-});
+// Blog.create({
+            //     title: "Blog 1",
+            //     image: "https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=350",
+            //     body: "Body of Blog 1"
+            // });
 
 // RESTful Routes
 
