@@ -46,6 +46,17 @@ app.get("/blogs", function(req, res) {
 app.get("/blogs/new", function(req, res) {
     res.render("new");
 });
+app.get("/blogs/:id", function(req, res) {
+
+    Blog.findById(req.params.id, function(err, foundBlog) {
+        if (err) {
+            console.log("ERROR!!");
+        }
+        else {
+            res.render("show", { blog: foundBlog });
+        }
+    })
+});
 app.post("/blogs", function(req, res) {
     var newBlog = req.body.blog;
     Blog.create(newBlog, function(err, newBlog) {
