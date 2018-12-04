@@ -20,10 +20,10 @@ var blogSchema = new mongoose.Schema({
 
 var Blog = mongoose.model("Blog", blogSchema);
 // Blog.create({
-            //     title: "Blog 1",
-            //     image: "https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=350",
-            //     body: "Body of Blog 1"
-            // });
+//     title: "Blog 1",
+//     image: "https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=350",
+//     body: "Body of Blog 1"
+// });
 
 // RESTful Routes
 
@@ -43,7 +43,20 @@ app.get("/blogs", function(req, res) {
 
 });
 
-
+app.get("/blogs/new", function(req, res) {
+    res.render("new");
+});
+app.post("/blogs", function(req, res) {
+    var newBlog = req.body.blog;
+    Blog.create(newBlog, function(err, newBlog) {
+        if (err) {
+            console.log("Error!!");
+        }
+        else {
+            res.redirect("/blogs");
+        }
+    });
+});
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RESTful Blog App started");
 });
