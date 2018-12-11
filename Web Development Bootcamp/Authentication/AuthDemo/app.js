@@ -29,6 +29,28 @@ app.get("/", function(req, res) {
 app.get("/secret", function(req, res) {
     res.render("secret");
 });
+
+// AUTH ROUTES
+app.get("/register", function(req, res) {
+    res.render("register");
+});
+app.post("/register", function(req, res) {
+    User.register(new User({ username: req.body.username }), req.body.password, function(err, user) {
+        if (err) {
+            console.log(err);
+            res.render("register");
+        }
+        else {
+            passport.authenticate("local")(req, res, function() {
+                res.render("secret");
+            });
+
+        }
+
+    })
+
+    // res.send("This  is register post")
+});
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RESTful Blog App started");
 });
