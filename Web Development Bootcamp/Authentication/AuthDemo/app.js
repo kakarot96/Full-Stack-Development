@@ -2,7 +2,7 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     passport = require("passport"),
-    localStrategy = require("passport-local"),
+    LocalStrategy = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     User = require("./models/user")
 var app = express();
@@ -20,6 +20,7 @@ app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(passport.session());
 mongoose.connect("mongodb://localhost/auth_demo_app");
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -31,6 +32,15 @@ app.get("/secret", function(req, res) {
 });
 
 // AUTH ROUTES
+app.get("/login", function(req, res) {
+    res.render("login");
+});
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/secret",
+    failureRedirect: "/login"
+}), function(req, res) {
+
+});
 app.get("/register", function(req, res) {
     res.render("register");
 });
