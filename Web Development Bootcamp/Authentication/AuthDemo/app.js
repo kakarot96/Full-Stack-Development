@@ -27,7 +27,7 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", function(req, res) {
     res.render("home");
 });
-app.get("/secret", function(req, res) {
+app.get("/secret", isLoggedIn, function(req, res) {
     res.render("secret");
 });
 
@@ -61,6 +61,17 @@ app.post("/register", function(req, res) {
 
     // res.send("This  is register post")
 });
+app.get("/logout", function(req, res) {
+    req.logout();
+    res.render("home");
+});
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("RESTful Blog App started");
 });
